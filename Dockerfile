@@ -1,6 +1,8 @@
 FROM openshift/origin
 
-RUN yum install -y docker unzip
-RUN wget https://blog.openshift.com/wp-content/uploads/blog_part1_files.zip
-RUN unzip blog_part1_files.zip
+RUN yum install -y docker-io unzip telnet nmap
+RUN mkdir /git
+RUN cd /git
+RUN git clone https://github.com/ianmiell/openshift-origin
+RUN git clone https://github.com/GoogleCloudPlatform/kubernetes
 
