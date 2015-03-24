@@ -1,6 +1,12 @@
 #!/bin/bash
+set -e
+NAME=openshift-origin
 docker pull imiell/openshift-origin
 mkdir -p /tmp/openshift
-docker run -d -v /tmp/openshift:/tmp/openshift --name openshift-origin --net=host --privileged -v /var/run/docker.sock:/var/run/docker.sock openshift/origin start
-docker exec -ti openshift-origin bash
+echo "================================================"
+echo "Trying to remove any existing container running"
+echo "================================================"
+docker rm -f $NAME || /bin/true
+docker run -d -v /tmp/openshift:/tmp/openshift --name $NAME --net=host --privileged -v /var/run/docker.sock:/var/run/docker.sock imiell/openshift-origin start
+docker exec -ti $NAME bash
 
