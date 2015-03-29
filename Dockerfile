@@ -1,6 +1,6 @@
 FROM openshift/origin
 
-RUN yum update -y && yum install -y docker-io unzip telnet nmap git mysql-client
+RUN yum update -y && yum install -y docker-io unzip telnet nmap git mysql-client lsof
 RUN mkdir /git
 RUN git clone https://github.com/openshift/training /git/training
 RUN git clone https://github.com/GoogleCloudPlatform/kubernetes /git/kubernetes
