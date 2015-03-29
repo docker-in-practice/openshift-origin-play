@@ -10,6 +10,6 @@ RUN useradd osuser
 RUN echo osuser:dockerinpractice | chpasswd
 RUN touch /etc/openshift-passwd
 RUN htpasswd -b /etc/openshift-passwd osuser dockerinpractice
-COPY /tmp/openshift-master-env.sh openshift-master-env.sh
+COPY openshift-master-env.sh /tmp/openshift-master-env.sh
 RUN cat /tmp/openshift-master-env.sh >> /etc/sysconfig/openshift-master
 
