@@ -1,8 +1,6 @@
 FROM openshift/origin
 
-RUN yum update -y && yum install -y docker-io unzip telnet nmap git mysql-client lsof httpd-tools
-
-
+RUN yum update -y && yum install -y docker-io unzip telnet nmap git mysql-client httpd-tools lsof
 RUN mkdir /git
 # openshift training code
 RUN git clone https://github.com/openshift/training /git/training
@@ -27,4 +25,4 @@ ENV CURL_CA_BUNDLE /var/lib/openshift/openshift.local.certificates/ca.cert.crt
 
 # Permissions for users
 RUN chmod +r /var/lib/openshift/openshift.local.certificates/admin/.kubeconfig
-RUN chmod +r /var/lib/openshift/openshift.local.certificates/openshift-registry/.kubeconfig
+RUN chmod +r /var/lib/openshift/openshift.local.certificates/ca.cert.crt
