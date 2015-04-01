@@ -27,4 +27,4 @@ ENV CURL_CA_BUNDLE /var/lib/openshift/openshift.local.certificates/ca.cert.crt
 
 # Permissions for users
 RUN chmod +r /var/lib/openshift/openshift.local.certificates/admin/.kubeconfig
-RUN chmod +r ./openshift.local.certificates/openshift-registry/.kubeconfig
+RUN chmod +r /var/lib/openshift/openshift.local.certificates/openshift-registry/.kubeconfig
