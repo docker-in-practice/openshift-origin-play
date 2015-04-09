@@ -1,6 +1,6 @@
 FROM openshift/origin
 
-RUN yum update -y && yum install -y docker-io unzip telnet nmap git mysql-client httpd-tools lsof
+RUN yum update -y && yum install -y docker-io unzip telnet nmap git mysql-client httpd-tools lsof golang build-essential
 RUN mkdir /git
 # openshift training code
 RUN git clone https://github.com/openshift/training /git/training
@@ -8,6 +8,9 @@ RUN git clone https://github.com/openshift/training /git/training
 RUN git clone https://github.com/GoogleCloudPlatform/kubernetes /git/kubernetes
 # utils
 RUN git clone https://github.com/jim-minter/ose3-demos /git/ose3-demos
+# utils
+RUN git clone https://github.com/openshift/source-to-image /git/source-to-image
+
 # We don't have an external load balancer in the kubernetes example
 RUN sed -i 's/"createExternalLoadBalancer": true//' /git/kubernetes/examples/guestbook/frontend-service.json
 # Add the user
